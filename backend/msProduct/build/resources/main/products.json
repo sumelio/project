@@ -1,0 +1,14 @@
+[{
+    "id": "1",
+    "images": ["image1", "image2", "image3"],
+    "title": "Product title",
+    "description": "Product description",
+    "price": "Product price",
+    "paymentMethods": ["payment_method1", "payment_method2", "payment_method3"],
+    "sellerInformation": "Product seller information",
+    "additionalDetails": {
+        "ratings": "Product ratings",
+        "reviews": "Product reviews",
+        "availableStock": "Product available stock"
+    }
+}] 
