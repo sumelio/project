@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.marketplace.domain.Product;
 import com.marketplace.domain.ProductRepository;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
 
 import java.io.File;
@@ -16,12 +17,7 @@ public class JsonProductRepository implements ProductRepository {
     private final String dataFile;
     private final ObjectMapper objectMapper = new ObjectMapper();
 
-    public JsonProductRepository() {
-        this.dataFile = "src/main/resources/products.json";
-    }
-
-    // Constructor for testing
-    public JsonProductRepository(String dataFile) {
+    public JsonProductRepository(@Value("${app.data.file:src/main/resources/products.json}") String dataFile) {
         this.dataFile = dataFile;
     }
 

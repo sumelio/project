@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  msproduct:
+    build:
+      context: ./backend/msProduct
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./backend/msProduct/src/main/resources/products.json:/app/data/products.json
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+      - SERVER_PORT=8080
+    networks:
+      - marketplace-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/product"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+networks:
+  marketplace-network:
+    driver: bridge
+
+volumes:
+  product-data: 
