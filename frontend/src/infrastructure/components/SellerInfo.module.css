@@ -1,0 +1,150 @@
+.sellerCard {
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+  margin: 0 0 20px 0;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.sellerDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.sellerName {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.icon {
+  font-size: 18px;
+}
+
+.name {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+}
+
+.sellerStats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
+
+.stat {
+  text-align: center;
+  padding: 15px 10px;
+  background: #f8f9fa;
+  border-radius: 6px;
+}
+
+.statValue {
+  display: block;
+  font-size: 18px;
+  font-weight: 700;
+  color: #3483fa;
+  margin-bottom: 5px;
+}
+
+.statLabel {
+  font-size: 12px;
+  color: #666;
+}
+
+.sellerBadges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.badge {
+  padding: 6px 12px;
+  background: #e8f4fd;
+  color: #3483fa;
+  border-radius: 15px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.sellerActions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.contactButton,
+.storeButton {
+  padding: 12px 16px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.contactButton {
+  background: #3483fa;
+  color: white;
+}
+
+.contactButton:hover {
+  background: #2968d7;
+}
+
+.storeButton {
+  background: transparent;
+  color: #3483fa;
+  border: 1px solid #3483fa;
+}
+
+.storeButton:hover {
+  background: #3483fa;
+  color: white;
+}
+
+.sellerPromises {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 15px;
+  background: #f8f9fa;
+  border-radius: 6px;
+}
+
+.promise {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #333;
+}
+
+.promiseIcon {
+  font-size: 14px;
+}
+
+@media (max-width: 768px) {
+  .sellerStats {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  
+  .stat {
+    padding: 10px;
+  }
+  
+  .sellerActions {
+    flex-direction: column;
+  }
+} 

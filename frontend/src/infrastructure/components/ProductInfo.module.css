@@ -1,0 +1,347 @@
+.productInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Status Badges */
+.statusBadges {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.newBadge {
+  background: #00a650;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.soldBadge {
+  background: #f8f9fa;
+  color: #666;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+/* Product Title */
+.title {
+  font-size: 24px;
+  font-weight: 600;
+  color: #333;
+  margin: 0;
+  line-height: 1.3;
+}
+
+/* Rating Section */
+.ratingSection {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.stars {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.ratingNumber {
+  font-weight: 600;
+  color: #333;
+  font-size: 16px;
+}
+
+.starRating {
+  color: #ffa500;
+  font-size: 16px;
+  letter-spacing: 1px;
+}
+
+.reviewCount {
+  color: #3483fa;
+  font-size: 14px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.reviewCount:hover {
+  text-decoration: underline;
+}
+
+.reviewsLink {
+  color: #3483fa;
+  font-size: 14px;
+  cursor: pointer;
+  text-decoration: none;
+  margin-left: 8px;
+}
+
+.reviewsLink:hover {
+  text-decoration: underline;
+}
+
+/* Pricing Section */
+.pricingSection {
+  padding: 16px 0;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.currentPrice {
+  font-size: 36px;
+  font-weight: 300;
+  color: #333;
+  margin-bottom: 8px;
+  line-height: 1.1;
+}
+
+.originalPrice {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.originalPriceText {
+  font-size: 16px;
+  color: #999;
+  text-decoration: line-through;
+}
+
+.discountPercentage {
+  background: #00a650;
+  color: white;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.installments {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.installmentText {
+  font-size: 16px;
+  color: #00a650;
+  font-weight: 500;
+}
+
+.installmentLink {
+  background: none;
+  border: none;
+  color: #3483fa;
+  font-size: 14px;
+  text-decoration: underline;
+  cursor: pointer;
+  padding: 0;
+  text-align: left;
+  font-family: inherit;
+}
+
+.installmentLink:hover {
+  color: #2968d7;
+}
+
+/* Color Selection */
+.colorSection {
+  padding: 16px 0;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+/* Storage Selection */
+.storageSection {
+  padding: 16px 0;
+}
+
+.sectionTitle {
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+  margin: 0 0 12px 0;
+}
+
+.selectedColor {
+  font-weight: 400;
+  color: #666;
+}
+
+.selectedStorage {
+  font-weight: 400;
+  color: #666;
+}
+
+.colorOptions {
+  display: flex;
+  gap: 8px;
+}
+
+.colorOption {
+  width: 40px;
+  height: 40px;
+  border-radius: 6px;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.colorOption:hover {
+  transform: scale(1.05);
+}
+
+.colorOption.active {
+  border-color: #3483fa;
+  box-shadow: 0 0 0 2px rgba(52, 131, 250, 0.2);
+}
+
+.colorOption.active::after {
+  content: '✓';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  text-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+}
+
+.storageOptions {
+  display: flex;
+  gap: 8px;
+}
+
+.storageOption {
+  padding: 8px 16px;
+  border: 1px solid #e5e5e5;
+  border-radius: 6px;
+  background: white;
+  color: #333;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+.storageOption:hover {
+  border-color: #3483fa;
+}
+
+.storageOption.active {
+  border-color: #3483fa;
+  background: rgba(52, 131, 250, 0.1);
+  color: #3483fa;
+  font-weight: 600;
+}
+
+/* Key Features */
+.featuresSection {
+  padding: 16px 0;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.featuresList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.feature {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #333;
+}
+
+.featureIcon {
+  font-size: 16px;
+  width: 20px;
+  text-align: center;
+}
+
+/* Stock Section */
+.stockSection {
+  padding: 16px 0;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.stockStatus {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.stockIcon {
+  font-size: 16px;
+}
+
+.stockText {
+  color: #00a650;
+  font-size: 14px;
+}
+
+.urgencyText {
+  color: #ff6b35;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 8px 12px;
+  background: #fff5f2;
+  border-radius: 4px;
+  border-left: 3px solid #ff6b35;
+}
+
+/* Seller Highlights */
+.sellerHighlights {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.highlight {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #333;
+}
+
+.highlightIcon {
+  font-size: 16px;
+  width: 20px;
+  text-align: center;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .title {
+    font-size: 20px;
+  }
+  
+  .currentPrice {
+    font-size: 28px;
+  }
+  
+  .colorOptions {
+    flex-wrap: wrap;
+  }
+  
+  .colorOption {
+    width: 36px;
+    height: 36px;
+  }
+} 

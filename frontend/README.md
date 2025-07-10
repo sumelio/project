@@ -44,3 +44,22 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+## Layout Strcuture
+┌─────────────────────────────────────────┐
+│ Breadcrumb Navigation                   │
+├─────────────────┬───────────────────────┤
+│                 │ Product Info          │
+│ Image Gallery   │ - Title & Price       │
+│ - Main Image    │ - Ratings & Reviews   │
+│ - Thumbnails    │ - Stock Info          │
+│ - Navigation    │ - Action Buttons      │
+│                 │ - Payment Methods     │
+├─────────────────┴───────────────────────┤
+│ Additional Details        │ Seller Info │
+│ - Ratings & Reviews       │ - Stats     │
+│ - Stock Status           │ - Badges    │
+│ - Product Features       │ - Actions   │
+├─────────────────────────────────────────┤
+│ Product Description                     │
+└─────────────────────────────────────────┘
