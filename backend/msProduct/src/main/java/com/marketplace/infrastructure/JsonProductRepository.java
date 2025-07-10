@@ -13,14 +13,23 @@ import java.util.List;
 
 @Repository
 public class JsonProductRepository implements ProductRepository {
-    private static final String DATA_FILE = "src/main/resources/products.json";
+    private final String dataFile;
     private final ObjectMapper objectMapper = new ObjectMapper();
+
+    public JsonProductRepository() {
+        this.dataFile = "src/main/resources/products.json";
+    }
+
+    // Constructor for testing
+    public JsonProductRepository(String dataFile) {
+        this.dataFile = dataFile;
+    }
 
     @Override
     public List<Product> findAll() {
         try {
-            File file = new File(DATA_FILE);
-            if (!file.exists()) return new ArrayList<>();
+            File file = new File(dataFile);
+            if (!file.exists() || file.length() == 0) return new ArrayList<>();
             return objectMapper.readValue(file, new TypeReference<List<Product>>() {});
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -62,7 +71,7 @@ public class JsonProductRepository implements ProductRepository {
 
     private void writeProducts(List<Product> products) {
         try {
-            objectMapper.writerWithDefaultPrettyPrinter().writeValue(new File(DATA_FILE), products);
+            objectMapper.writerWithDefaultPrettyPrinter().writeValue(new File(dataFile), products);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

@@ -14,6 +14,8 @@ This project is a prototype for an item detail page inspired by MercadoLibre, in
 - **Gradle** - Build tool
 - **Data** - No database; data is stored in a JSON file
 - **Docker** - Developer container (optional)
+- **Unit Testing** - JUnit for test framework, Mockito for mocking, Jacoco for code coverage
+- ***Non-functional requirements** - Proper error handling, documented, at least 80% code coverage
 
 ### Frontend
 - **TypeScript** - Static language
@@ -154,8 +156,30 @@ public class ProductController {
 
 ### 9. Testing
 
-- Use JUnit and Mockito for unit tests (application and domain layers)
-- Use Jacoco for code coverage
+- Use **JUnit** for writing unit tests (application and domain layers)
+- Use **Mockito** for mocking dependencies in tests
+- Use **Jacoco** for code coverage reports
+
+#### Running Unit Tests
+
+To run all unit tests:
+```sh
+./gradlew test
+```
+
+#### Generating Code Coverage Report
+
+To generate a code coverage report with Jacoco:
+```sh
+./gradlew jacocoTestReport
+```
+
+The coverage report will be available at:
+```
+msProduct/build/reports/jacoco/test/html/index.html
+```
+
+You can open this file in your browser to view detailed coverage information.
 
 ### 10. Build and Run
 
