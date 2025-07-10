@@ -1,0 +1,97 @@
+.sellerInfoCard {
+  border: 1px solid #e5e5e5;
+  border-radius: 8px;
+  padding: 24px;
+  background-color: #fff;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 24px;
+}
+
+.sellerInfo {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.sellerLocation,
+.sellerReputation {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.locationIcon,
+.reputationIcon {
+  font-size: 24px;
+}
+
+.locationText,
+.reputationText {
+  font-size: 14px;
+  color: #666;
+  margin: 0;
+}
+
+.locationValue,
+.reputationValue {
+  font-size: 14px;
+  color: #333;
+  margin: 0;
+}
+
+.reputationText {
+  color: #00a650;
+  font-weight: 600;
+}
+
+.reputationBar {
+  display: flex;
+  height: 8px;
+  margin-bottom: 24px;
+}
+
+.barSegment {
+  flex: 1;
+}
+
+.sellerStats {
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.stat {
+  flex: 1;
+  border-left: 1px solid #e5e5e5;
+}
+
+.stat:first-child {
+  border-left: none;
+}
+
+.statValue {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0 0 4px;
+}
+
+.statLabel {
+  font-size: 12px;
+  color: #666;
+  margin: 0;
+}
+
+.seeMoreLink {
+  color: #3483fa;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.seeMoreLink:hover {
+  text-decoration: underline;
+} 

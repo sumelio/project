@@ -94,8 +94,44 @@
   grid-template-columns: 80px 600px 300px 300px;
   gap: 20px;
   align-items: start;
-  width: 1380px; /* Total width: 80 + 600 + 300 + 300 + gaps */
-  max-width: 100%;
+  padding: 24px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+/* Product Info Column - Third Column */
+.productInfoColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 0 16px;
+}
+
+/* Purchase Panel Column - Fourth Column */
+.purchasePanelColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+  border: 1px solid #e5e5e5;
+  border-radius: 8px;
+  background-color: #fff;
+}
+
+.infoPurchaseColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  border: 1px solid #e5e5e5;
+  border-radius: 8px;
+  padding: 24px;
+}
+
+.mainProductContent {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 24px;
 }
 
 /* Image Section */
@@ -109,20 +145,6 @@
 
 /* Info Section */
 .infoSection {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-/* Product Info Column - Third Column */
-.productInfoColumn {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-/* Purchase Panel Column - Fourth Column */
-.purchasePanelColumn {
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -735,46 +757,28 @@
   margin-top: 24px;
 }
 
-.characteristicsGrid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
+.characteristicsTable {
+  width: 100%;
+  border-collapse: collapse;
   margin-bottom: 24px;
 }
 
-.characteristicCard {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  padding: 16px;
-  border: 1px solid #e5e5e5;
-  border-radius: 8px;
+.characteristicsTable th,
+.characteristicsTable td {
+  padding: 12px 16px;
+  text-align: left;
+  border-bottom: 1px solid #f0f0f0;
 }
 
-.characteristicIcon {
-  font-size: 24px;
-  width: 40px;
-  text-align: center;
-}
-
-.characteristicInfo {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.characteristicLabel {
-  font-size: 12px;
-  color: #666;
-  text-transform: uppercase;
-  font-weight: 500;
-}
-
-.characteristicValue {
-  font-size: 14px;
+.characteristicsTable th {
+  background-color: #f8f9fa;
+  font-weight: 600;
   color: #333;
-  font-weight: 500;
+  width: 30%;
+}
+
+.characteristicsTable td {
+  color: #666;
 }
 
 .seeAllCharacteristics {
@@ -1154,31 +1158,16 @@
 /* Responsive Design */
 @media (max-width: 1024px) {
   .productLayout {
-    grid-template-columns: 1fr 300px;
-    gap: 20px;
+    grid-template-columns: 1fr;
+    padding: 16px;
   }
-  
-  /* Stack thumbnails and main image in first column */
-  .thumbnailColumn {
-    grid-column: 1;
-    grid-row: 1;
+
+  .mainProductContent {
+    grid-template-columns: 1fr;
   }
-  
-  .mainImageColumn {
-    grid-column: 1;
-    grid-row: 2;
-  }
-  
-  /* Product info in second column */
-  .productInfoColumn {
-    grid-column: 2;
-    grid-row: 1;
-  }
-  
-  /* Purchase panel below product info */
+
   .purchasePanelColumn {
-    grid-column: 2;
-    grid-row: 2;
+    margin-top: 24px;
   }
   
   .relatedProducts {
@@ -1193,18 +1182,6 @@
 @media (max-width: 768px) {
   .container {
     padding: 0 16px;
-  }
-  
-  .productLayout {
-    grid-template-columns: 1fr;
-    gap: 16px;
-  }
-  
-  .thumbnailColumn,
-  .mainImageColumn,
-  .productInfoColumn,
-  .purchasePanelColumn {
-    grid-column: 1;
   }
   
   .actionButtons {
@@ -1228,10 +1205,6 @@
   }
   
   .relatedProducts {
-    grid-template-columns: 1fr;
-  }
-  
-  .characteristicsGrid {
     grid-template-columns: 1fr;
   }
   

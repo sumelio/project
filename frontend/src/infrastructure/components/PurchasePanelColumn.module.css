@@ -1,0 +1,209 @@
+.purchasePanelColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+  border: 1px solid #e5e5e5;
+  border-radius: 8px;
+  background-color: #fff;
+}
+
+/* Shipping Card */
+.shippingCard {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.shippingOption {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.shippingIcon {
+  font-size: 20px;
+  margin-top: 2px;
+}
+
+.shippingDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.shippingTitle {
+  color: #00a650;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.shippingSubtitle {
+  color: #666;
+  font-size: 14px;
+}
+
+.shippingLink {
+  background: none;
+  border: none;
+  color: #3483fa;
+  font-size: 14px;
+  padding: 0;
+  cursor: pointer;
+  text-align: left;
+  text-decoration: underline;
+}
+
+/* Stock Card */
+.stockCard {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.stockTitle {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+}
+
+.quantitySelector {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.quantityLabel {
+  font-size: 14px;
+  color: #333;
+}
+
+.quantitySelect {
+  padding: 8px;
+  border: 1px solid #e5e5e5;
+  border-radius: 6px;
+  font-size: 14px;
+  color: #333;
+  background: white;
+}
+
+.stockAvailable {
+  font-size: 14px;
+  color: #666;
+}
+
+/* Action Buttons */
+.actionButtons {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.buyNowButton {
+  background: #3483fa;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.buyNowButton:hover {
+  background: #2968c8;
+}
+
+.addToCartButton {
+  background: rgba(65, 137, 230, 0.15);
+  color: #3483fa;
+  border: none;
+  border-radius: 6px;
+  padding: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.addToCartButton:hover {
+  background: rgba(65, 137, 230, 0.2);
+}
+
+/* Seller Info */
+.sellerInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 16px 0;
+  border-top: 1px solid #e5e5e5;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.sellerLabel {
+  font-size: 14px;
+  color: #666;
+}
+
+.sellerName {
+  color: #3483fa;
+  text-decoration: none;
+}
+
+.sellerName:hover {
+  text-decoration: underline;
+}
+
+.sellerReputation {
+  font-size: 14px;
+  color: #00a650;
+}
+
+/* Protection Info */
+.protectionInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.protectionItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.protectionIcon {
+  font-size: 16px;
+  margin-top: 2px;
+}
+
+.protectionText {
+  font-size: 14px;
+  color: #666;
+  line-height: 1.4;
+}
+
+/* Add to List Button */
+.addToListButton {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: none;
+  border: none;
+  color: #3483fa;
+  font-size: 14px;
+  padding: 0;
+  cursor: pointer;
+  text-align: left;
+  width: 100%;
+}
+
+.addToListButton:hover {
+  text-decoration: underline;
+}
+
+.arrowIcon {
+  font-size: 18px;
+  margin-left: 4px;
+} 

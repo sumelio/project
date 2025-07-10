@@ -18,7 +18,7 @@ This project is a prototype for an item detail page inspired by MercadoLibre, in
 - ***Non-functional requirements** - Proper error handling, documented, at least 80% code coverage
 
 ### Frontend
-- **TypeScript** - Static language
+- **React** - Hexagonal Architecture and saga for redux pattern
 - **CSS Modules** - Modular styles
 
 ---

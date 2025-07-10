@@ -1,14 +1,15 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState, AppDispatch } from '../../application/store/store';
 import { fetchProductByIdStart } from '../../application/store/productSlice';
-import ImageGallery from './ImageGallery';
-import ProductInfo from './ProductInfo';
-import SellerInfo from './SellerInfo';
-import AdditionalInfo from './AdditionalInfo';
+import ThumbnailStrip from './ThumbnailStrip';
+import MainImageDisplay from './MainImageDisplay';
+import ProductInfoColumn from './ProductInfoColumn';
+import PurchasePanelColumn from './PurchasePanelColumn';
 import LoadingSpinner from './LoadingSpinner';
 import ErrorMessage from './ErrorMessage';
 import styles from './ProductDetailPage.module.css';
+import SellerInfoCard from './SellerInfoCard';
 
 interface ProductDetailPageProps {
   productId?: string;
@@ -17,6 +18,7 @@ interface ProductDetailPageProps {
 const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ productId = "1" }) => {
   const dispatch = useDispatch<AppDispatch>();
   const { currentProduct, loading, error } = useSelector((state: RootState) => state.product);
+  const [selectedIndex, setSelectedIndex] = useState(0);
 
   useEffect(() => {
     if (productId) {
@@ -35,6 +37,10 @@ const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ productId = "1" }
   if (!currentProduct) {
     return <ErrorMessage message="Product not found" />;
   }
+
+  const handleThumbnailSelect = (index: number) => {
+    setSelectedIndex(index);
+  };
 
   return (
     <div className={styles.pageContainer}>
@@ -67,120 +73,31 @@ const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ productId = "1" }
       <div className={styles.container}>
         <div className={styles.mainContent}>
           <div className={styles.productLayout}>
-            {/* Four Column Layout: Thumbnails | Main Image | Product Info | Purchase Panel */}
-            <ImageGallery images={currentProduct.images} title={currentProduct.title} />
+            {/* Column 1: Thumbnail Strip */}
+            <ThumbnailStrip
+              images={currentProduct.images}
+              onSelect={handleThumbnailSelect}
+              selectedIndex={selectedIndex}
+            />
 
-            {/* Third Column: Product Info */}
-            <div className={styles.productInfoColumn}>
-              <div className={styles.productBasicInfo}>
-                <ProductInfo product={currentProduct} />
-                
-                {/* Product Features */}
-                <div className={styles.productFeatures}>
-                  <h3 className={styles.featuresTitle}>Lo que tienes que saber de este producto</h3>
-                  <ul className={styles.featuresList}>
-                    <li>Memoria RAM: 8 GB.</li>
-                    <li>Dispositivo desbloqueado para que elijas tu compañía telefónica preferida.</li>
-                    <li>Memoria interna de 256 GB.</li>
-                  </ul>
-                  <button className={styles.seeMoreButton}>Ver características</button>
-                </div>
+            {/* Column 2: Main Image */}
+            <MainImageDisplay
+              image={currentProduct.images[selectedIndex]}
+              title={currentProduct.title}
+            />
 
-                {/* Purchase Options */}
-                <div className={styles.purchaseOptions}>
-                  <h4 className={styles.optionsTitle}>Opciones de compra:</h4>
-                  <div className={styles.optionItem}>
-                    <span className={styles.optionCount}>3 productos nuevos desde</span>
-                    <span className={styles.optionPrice}>US$ 439</span>
-                  </div>
-                </div>
-              </div>
-            </div>
+            {/* Column 3: Product Info */}
+            <ProductInfoColumn product={currentProduct} />
 
-            {/* Fourth Column: Purchase Panel */}
-            <div className={styles.purchasePanelColumn}>
-              <div className={styles.purchasePanel}>
-                {/* Shipping Info */}
-                <div className={styles.shippingCard}>
-                  <div className={styles.shippingOption}>
-                    <span className={styles.shippingIcon}>🚚</span>
-                    <div className={styles.shippingDetails}>
-                      <span className={styles.shippingTitle}>Envío gratis a todo el país</span>
-                      <span className={styles.shippingSubtitle}>Conoce los tiempos y las formas de envío.</span>
-                      <button className={styles.shippingLink}>Calcular cuándo llega</button>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Stock Info */}
-                <div className={styles.stockCard}>
-                  <div className={styles.stockHeader}>
-                    <span className={styles.stockTitle}>Stock disponible</span>
-                  </div>
-                  <div className={styles.quantitySelector}>
-                    <label className={styles.quantityLabel}>Cantidad:</label>
-                    <select className={styles.quantitySelect}>
-                      <option value="1">1 unidad</option>
-                      <option value="2">2 unidades</option>
-                      <option value="3">3 unidades</option>
-                      <option value="4">4 unidades</option>
-                    </select>
-                    <span className={styles.stockAvailable}>(+50 disponibles)</span>
-                  </div>
-                </div>
-
-                {/* Action Buttons */}
-                <div className={styles.actionButtons}>
-                  <button className={styles.buyNowButton}>Comprar ahora</button>
-                  <button className={styles.addToCartButton}>Agregar al carrito</button>
-                </div>
-
-                {/* Seller Info */}
-                <div className={styles.sellerCard}>
-                  <div className={styles.sellerHeader}>
-                    <span className={styles.sellerLabel}>Vendido por</span>
-                    <a href="#" className={styles.sellerName}>Samsung</a>
-                    <span className={styles.officialBadge}>Tienda oficial</span>
-                  </div>
-                  <div className={styles.sellerStats}>
-                    <span className={styles.sellerSales}>+50 mil ventas</span>
-                  </div>
-                </div>
-
-                {/* Guarantees */}
-                <div className={styles.guaranteesCard}>
-                  <div className={styles.guaranteeItem}>
-                    <span className={styles.guaranteeIcon}>↩️</span>
-                    <span className={styles.guaranteeText}>Devolución gratis. Tienes 30 días desde que lo recibes.</span>
-                  </div>
-                  <div className={styles.guaranteeItem}>
-                    <span className={styles.guaranteeIcon}>🛡️</span>
-                    <span className={styles.guaranteeText}>Compra Protegida, recibe el producto que esperabas o te devolvemos tu dinero.</span>
-                  </div>
-                </div>
-
-                {/* Payment Methods */}
-                <div className={styles.paymentCard}>
-                  <h4 className={styles.paymentTitle}>Medios de pago</h4>
-                  <div className={styles.paymentBenefit}>
-                    <span className={styles.paymentIcon}>💳</span>
-                    <span>¡Paga en hasta 12 cuotas sin interés!</span>
-                  </div>
-                  <div className={styles.paymentMethods}>
-                    <div className={styles.paymentMethod}>
-                      <span className={styles.methodIcon}>💳</span>
-                      <span>Tarjetas de crédito</span>
-                    </div>
-                    <div className={styles.paymentMethod}>
-                      <span className={styles.methodIcon}>💰</span>
-                      <span>Efectivo</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            {/* Column 4: Purchase Panel */}
+            <PurchasePanelColumn stock={4} />
           </div>
         </div>
+      </div>
+
+      {/* SellerInfoCard, Related Products, etc. */}
+      <div className={styles.container}>
+        <SellerInfoCard />
       </div>
 
       {/* Related Products Section */}
@@ -275,39 +192,26 @@ const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ productId = "1" }
       <div className={styles.characteristicsSection}>
         <div className={styles.container}>
           <h2 className={styles.sectionTitle}>Características del producto</h2>
-          <div className={styles.characteristicsGrid}>
-            <div className={styles.characteristicCard}>
-              <div className={styles.characteristicIcon}>📱</div>
-              <div className={styles.characteristicInfo}>
-                <span className={styles.characteristicLabel}>Tamaño de la pantalla</span>
-                <span className={styles.characteristicValue}>6.6 " (16.11 cm x 7.74 cm x 8.2 mm)</span>
-              </div>
-            </div>
-
-            <div className={styles.characteristicCard}>
-              <div className={styles.characteristicIcon}>💾</div>
-              <div className={styles.characteristicInfo}>
-                <span className={styles.characteristicLabel}>Memoria interna</span>
-                <span className={styles.characteristicValue}>256 GB</span>
-              </div>
-            </div>
-
-            <div className={styles.characteristicCard}>
-              <div className={styles.characteristicIcon}>📸</div>
-              <div className={styles.characteristicInfo}>
-                <span className={styles.characteristicLabel}>Cámara trasera principal</span>
-                <span className={styles.characteristicValue}>50 Mpx</span>
-              </div>
-            </div>
-
-            <div className={styles.characteristicCard}>
-              <div className={styles.characteristicIcon}>📶</div>
-              <div className={styles.characteristicInfo}>
-                <span className={styles.characteristicLabel}>Con NFC</span>
-                <span className={styles.characteristicValue}>Sí</span>
-              </div>
-            </div>
-          </div>
+          <table className={styles.characteristicsTable}>
+            <tbody>
+              <tr>
+                <th>Marca</th>
+                <td>Samsung</td>
+              </tr>
+              <tr>
+                <th>Línea</th>
+                <td>Galaxy A</td>
+              </tr>
+              <tr>
+                <th>Modelo</th>
+                <td>A55 5G</td>
+              </tr>
+              <tr>
+                <th>Color</th>
+                <td>Azul oscuro</td>
+              </tr>
+            </tbody>
+          </table>
           <button className={styles.seeAllCharacteristics}>Ver todas las características</button>
         </div>
       </div>

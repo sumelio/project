@@ -1,0 +1,12 @@
+.mainImageDisplay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.mainImage {
+  max-width: 100%;
+  max-height: 600px;
+  object-fit: contain;
+} 
