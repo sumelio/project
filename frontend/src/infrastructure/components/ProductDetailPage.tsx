@@ -69,6 +69,7 @@ const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ productId = "1" }
         </div>
       </div>
 
+      
       {/* Main Product Section */}
       <div className={styles.container}>
         <div className={styles.mainContent}>
@@ -93,52 +94,52 @@ const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ productId = "1" }
             <PurchasePanelColumn product={currentProduct} />
           </div>
         </div>
-      </div>
 
-     {/* Related Products Section */}
-      <RelatedProducts
-        products={[
-          {
-            id: '1',
-            image: 'https://http2.mlstatic.com/D_Q_NP_2X_724202-MCO83153296147_032025-AB.webp',
-            title: 'Zte Blade A55 Dual Sim 128gb 4gb Ram',
-            originalPrice: 500000,
-            currentPrice: 294900,
-            discount: 41,
-            installments: {
-              quantity: 3,
-              amount: 98300
+        {/* Related Products Section */}
+        <RelatedProducts
+          products={[
+            {
+              id: '1',
+              image: 'https://http2.mlstatic.com/D_Q_NP_2X_724202-MCO83153296147_032025-AB.webp',
+              title: 'Zte Blade A55 Dual Sim 128gb 4gb Ram',
+              originalPrice: 500000,
+              currentPrice: 294900,
+              discount: 41,
+              installments: {
+                quantity: 3,
+                amount: 98300
+              },
+              hasFreeShipping: true
             },
-            hasFreeShipping: true
-          },
-          {
-            id: '2',
-            image: 'https://http2.mlstatic.com/D_Q_NP_2X_806397-MCO82866909662_032025-AB.webp',
-            title: 'Zte Blade V70 Dual Sim 256gb 8gb Ram',
-            originalPrice: 850000,
-            currentPrice: 504900,
-            discount: 40,
-            installments: {
-              quantity: 3,
-              amount: 168300
+            {
+              id: '2',
+              image: 'https://http2.mlstatic.com/D_Q_NP_2X_806397-MCO82866909662_032025-AB.webp',
+              title: 'Zte Blade V70 Dual Sim 256gb 8gb Ram',
+              originalPrice: 850000,
+              currentPrice: 504900,
+              discount: 40,
+              installments: {
+                quantity: 3,
+                amount: 168300
+              },
+              hasFreeShipping: true
             },
-            hasFreeShipping: true
-          },
-          {
-            id: '3',
-            image: 'https://http2.mlstatic.com/D_Q_NP_2X_939552-MCO83649111115_042025-AB.webp',
-            title: 'Zte Blade A35e Dual Sim 64gb 2gb Ram',
-            originalPrice: 499000,
-            currentPrice: 239520,
-            discount: 52,
-            installments: {
-              quantity: 3,
-              amount: 79840
-            },
-            hasFreeShipping: true
-          }
-        ]}
-      />
+            {
+              id: '3',
+              image: 'https://http2.mlstatic.com/D_Q_NP_2X_939552-MCO83649111115_042025-AB.webp',
+              title: 'Zte Blade A35e Dual Sim 64gb 2gb Ram',
+              originalPrice: 499000,
+              currentPrice: 239520,
+              discount: 52,
+              installments: {
+                quantity: 3,
+                amount: 79840
+              },
+              hasFreeShipping: true
+            }
+          ]}
+        />
+      </div>
     </div>
   );
 };

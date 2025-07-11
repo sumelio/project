@@ -201,3 +201,112 @@
 .cardLogo {
   font-size: 24px;
 } 
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .sellerPanel {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .sellerPanel {
+    gap: 16px;
+  }
+
+  .sellerInfo,
+  .purchaseOptions,
+  .paymentMethods {
+    padding: 16px;
+  }
+
+  .sellerName {
+    font-size: 15px;
+  }
+
+  .productsCount {
+    font-size: 13px;
+  }
+
+  .reputationBadge {
+    font-size: 13px;
+  }
+
+  .metricItem {
+    font-size: 13px;
+  }
+
+  .optionsTitle,
+  .paymentTitle {
+    font-size: 15px;
+  }
+
+  .cardTitle {
+    font-size: 13px;
+  }
+
+  .cardSubtitle {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 480px) {
+  .sellerPanel {
+    gap: 12px;
+  }
+
+  .sellerInfo,
+  .purchaseOptions,
+  .paymentMethods {
+    padding: 12px;
+  }
+
+  .sellerHeader {
+    gap: 8px;
+  }
+
+  .sellerAvatar {
+    width: 32px;
+    height: 32px;
+    font-size: 16px;
+  }
+
+  .sellerName {
+    font-size: 14px;
+  }
+
+  .productsCount {
+    font-size: 12px;
+  }
+
+  .followButton {
+    padding: 4px 8px;
+    font-size: 12px;
+  }
+
+  .reputationBadge {
+    font-size: 12px;
+  }
+
+  .reputationDescription {
+    font-size: 11px;
+  }
+
+  .metricItem {
+    font-size: 12px;
+  }
+
+  .optionsTitle,
+  .paymentTitle {
+    font-size: 14px;
+  }
+
+  .cardLogos {
+    gap: 6px;
+  }
+
+  .cardLogo {
+    font-size: 20px;
+  }
+} 

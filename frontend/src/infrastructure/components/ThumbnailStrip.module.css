@@ -12,6 +12,7 @@
   cursor: pointer;
   overflow: hidden;
   transition: border-color 0.2s ease;
+  flex-shrink: 0;
 }
 
 .thumbnail:hover {
@@ -26,4 +27,62 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .thumbnailStrip {
+    flex-direction: row;
+    gap: 12px;
+    overflow-x: auto;
+    padding: 8px 0;
+    scrollbar-width: thin;
+    scrollbar-color: #ccc transparent;
+  }
+
+  .thumbnailStrip::-webkit-scrollbar {
+    height: 4px;
+  }
+
+  .thumbnailStrip::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 2px;
+  }
+
+  .thumbnailStrip::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 2px;
+  }
+
+  .thumbnailStrip::-webkit-scrollbar-thumb:hover {
+    background: #999;
+  }
+
+  .thumbnail {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+@media (max-width: 768px) {
+  .thumbnailStrip {
+    gap: 8px;
+    padding: 4px 0;
+  }
+
+  .thumbnail {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+@media (max-width: 480px) {
+  .thumbnailStrip {
+    gap: 6px;
+  }
+
+  .thumbnail {
+    width: 50px;
+    height: 50px;
+  }
 } 
