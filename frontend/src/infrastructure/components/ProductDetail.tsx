@@ -131,7 +131,7 @@ const ProductDetail: React.FC = () => {
                 <strong>💰 Price:</strong> ${currentProduct.price}
               </div>
               <div>
-                <strong>👤 Seller:</strong> {currentProduct.sellerInformation}
+                <strong>👤 Seller:</strong> {currentProduct.sellerInformation.name}
               </div>
             </div>
 

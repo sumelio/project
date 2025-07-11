@@ -15,7 +15,22 @@
       "Debit cards (Visa Débito, Mastercard Débito)",
       "Cash through Efecty"
   ],
-  "sellerInformation": "laeternaproductos. They are identified as a MercadoLíder and have over 1000 sales. The seller provides good customer service and delivers products on time.",
+  "sellerInformation": {
+    "name": "Tienda Oficial de Samsung",
+    "productsCount": "100mil",
+    "reputation": {
+      "level": "MercadoLíder",
+      "description": "¡Uno de los mejores del sitio!"
+    },
+    "metrics": {
+      "sales": "1000",
+      "service": "Brinda buena atención",
+      "delivery": "Entrega sus productos a tiempo"
+    },
+    "purchaseOptions": {
+      "price": 1853861
+    }
+  },
   "additionalDetails": {
       "ratings": "4.8",
       "reviews": "769",

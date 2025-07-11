@@ -97,6 +97,7 @@ const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ productId = "1" }
 
         {/* Related Products Section */}
         <RelatedProducts
+          currentProduct={currentProduct}
           products={[
             {
               id: '1',

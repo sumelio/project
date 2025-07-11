@@ -11,12 +11,12 @@ public class Product {
     private String description;
     private String price;
     private List<String> paymentMethods;
-    private String sellerInformation;
+    private SellerInformation sellerInformation;
     private AdditionalDetails additionalDetails;
 
     public Product() {}
 
-    public Product(String id, List<String> images, String title, String description, String price, List<String> paymentMethods, String sellerInformation, AdditionalDetails additionalDetails) {
+    public Product(String id, List<String> images, String title, String description, String price, List<String> paymentMethods, SellerInformation sellerInformation, AdditionalDetails additionalDetails) {
         this.id = id;
         this.images = images;
         this.title = title;
@@ -45,8 +45,8 @@ public class Product {
     public List<String> getPaymentMethods() { return paymentMethods; }
     public void setPaymentMethods(List<String> paymentMethods) { this.paymentMethods = paymentMethods; }
 
-    public String getSellerInformation() { return sellerInformation; }
-    public void setSellerInformation(String sellerInformation) { this.sellerInformation = sellerInformation; }
+    public SellerInformation getSellerInformation() { return sellerInformation; }
+    public void setSellerInformation(SellerInformation sellerInformation) { this.sellerInformation = sellerInformation; }
 
     public AdditionalDetails getAdditionalDetails() { return additionalDetails; }
     public void setAdditionalDetails(AdditionalDetails additionalDetails) { this.additionalDetails = additionalDetails; }

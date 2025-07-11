@@ -52,9 +52,11 @@ const PurchasePanelColumn: React.FC<PurchasePanelColumnProps> = ({ product }) =>
       {/* Seller Info */}
       <div className={styles.sellerInfo}>
         <span className={styles.sellerLabel}>
-          Vendido por <a href="#" className={styles.sellerName}>{product.sellerInformation}</a>
+          Vendido por <a href="#" className={styles.sellerName}>{product.sellerInformation.name}</a>
         </span>
-        <span className={styles.sellerReputation}>MercadoLíder | +1000 ventas</span>
+        <span className={styles.sellerReputation}>
+          {product.sellerInformation.reputation.level} | +{product.sellerInformation.metrics.sales} ventas
+        </span>
       </div>
 
       {/* Protection Info */}

@@ -1,5 +1,6 @@
 import React from 'react';
 import SellerPanel from './SellerPanel';
+import { Product } from '../../domain/entities/Product';
 import styles from './RelatedProducts.module.css';
 
 interface RelatedProduct {
@@ -18,9 +19,10 @@ interface RelatedProduct {
 
 interface RelatedProductsProps {
   products: RelatedProduct[];
+  currentProduct: Product;
 }
 
-const RelatedProducts: React.FC<RelatedProductsProps> = ({ products }) => {
+const RelatedProducts: React.FC<RelatedProductsProps> = ({ products, currentProduct }) => {
   const formatPrice = (price: number) => {
     return new Intl.NumberFormat('es-CO', {
       style: 'currency',
@@ -72,24 +74,7 @@ const RelatedProducts: React.FC<RelatedProductsProps> = ({ products }) => {
           </div>
         </div>
 
-        <SellerPanel
-          seller={{
-            name: "laeternaproductos",
-            productsCount: "100mil",
-            reputation: {
-              level: "MercadoLíder",
-              description: "¡Uno de los mejores del sitio!"
-            },
-            metrics: {
-              sales: "1000",
-              service: "Brinda buena atención",
-              delivery: "Entrega sus productos a tiempo"
-            }
-          }}
-          purchaseOptions={{
-            price: 1853861
-          }}
-        />
+        <SellerPanel product={currentProduct} />
       </div>
     </section>
   );

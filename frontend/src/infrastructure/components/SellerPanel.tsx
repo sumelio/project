@@ -1,35 +1,33 @@
 import React from 'react';
+import { Product } from '../../domain/entities/Product';
 import styles from './SellerPanel.module.css';
 
 interface SellerPanelProps {
-  seller: {
-    name: string;
-    productsCount: string;
-    reputation: {
-      level: string;
-      description: string;
-    };
-    metrics: {
-      sales: string;
-      service: string;
-      delivery: string;
-    };
-  };
-  purchaseOptions: {
-    price: number;
-  };
+  product: Product;
 }
 
-const SellerPanel: React.FC<SellerPanelProps> = ({ seller, purchaseOptions }) => {
+const SellerPanel: React.FC<SellerPanelProps> = ({ product }) => {
+  const { sellerInformation } = product;
+  
+  const formatPrice = (price: number): string => {
+    return new Intl.NumberFormat('es-CO', {
+      style: 'currency',
+      currency: 'COP',
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    }).format(price);
+  };
   return (
     <div className={styles.sellerPanel}>
       {/* Seller Info */}
       <div className={styles.sellerInfo}>
         <div className={styles.sellerHeader}>
-          <div className={styles.sellerAvatar}>L</div>
+          <div className={styles.sellerAvatar}>
+            {sellerInformation.name.charAt(0).toUpperCase()}
+          </div>
           <div className={styles.sellerDetails}>
-            <h3 className={styles.sellerName}>{seller.name}</h3>
-            <span className={styles.productsCount}>+{seller.productsCount} Productos</span>
+            <h3 className={styles.sellerName}>{sellerInformation.name}</h3>
+            <span className={styles.productsCount}>+{sellerInformation.productsCount} Productos</span>
           </div>
           <button className={styles.followButton}>Seguir</button>
         </div>
@@ -37,9 +35,9 @@ const SellerPanel: React.FC<SellerPanelProps> = ({ seller, purchaseOptions }) =>
         <div className={styles.reputationInfo}>
           <span className={styles.reputationBadge}>
             <span className={styles.badgeIcon}>🏆</span>
-            {seller.reputation.level}
+            {sellerInformation.reputation.level}
           </span>
-          <span className={styles.reputationDescription}>{seller.reputation.description}</span>
+          <span className={styles.reputationDescription}>{sellerInformation.reputation.description}</span>
         </div>
 
         <div className={styles.metricsBar}>
@@ -54,51 +52,70 @@ const SellerPanel: React.FC<SellerPanelProps> = ({ seller, purchaseOptions }) =>
 
         <div className={styles.metrics}>
           <div className={styles.metricItem}>
-            <span className={styles.metricValue}>+{seller.metrics.sales}</span>
-            <span className={styles.metricLabel}>Ventas concretadas</span>
+            <span className={styles.metricIcon}>📊</span>
+            <span className={styles.metricValue}>{sellerInformation.metrics.sales}</span>
+            <span>ventas</span>
           </div>
           <div className={styles.metricItem}>
-            <span className={styles.metricIcon}>👍</span>
-            <span className={styles.metricLabel}>Brinda buena atención</span>
+            <span className={styles.metricIcon}>⭐</span>
+            <span>{sellerInformation.metrics.service}</span>
           </div>
           <div className={styles.metricItem}>
-            <span className={styles.metricIcon}>⏱️</span>
-            <span className={styles.metricLabel}>Entrega sus productos a tiempo</span>
+            <span className={styles.metricIcon}>🚚</span>
+            <span>{sellerInformation.metrics.delivery}</span>
           </div>
         </div>
 
-        <a href="#" className={styles.sellerLink}>Ir a la página del vendedor</a>
+        <a href={`/seller/${sellerInformation.name}`} className={styles.sellerLink}>
+          Ver más datos de este vendedor
+        </a>
       </div>
 
       {/* Purchase Options */}
       <div className={styles.purchaseOptions}>
-        <h4 className={styles.optionsTitle}>Otras opciones de compra</h4>
-        <a href="#" className={styles.optionsLink}>
-          Ver 3 opciones desde $ {purchaseOptions.price.toLocaleString('es-CO')}
-        </a>
+        <div className={styles.priceSection}>
+          <div className={styles.currentPrice}>
+            {formatPrice(sellerInformation.purchaseOptions.price)}
+          </div>
+          <div className={styles.installments}>
+            en 12x {formatPrice(sellerInformation.purchaseOptions.price / 12)}
+          </div>
+        </div>
+
+        <div className={styles.stockInfo}>
+          <span className={styles.stockText}>Stock disponible</span>
+          <span className={styles.stockQuantity}>({product.additionalDetails.availableStock} disponibles)</span>
+        </div>
+
+        <div className={styles.shippingInfo}>
+          <div className={styles.shippingItem}>
+            <span className={styles.shippingIcon}>🚚</span>
+            <div className={styles.shippingDetails}>
+              <span className={styles.shippingText}>Envío gratis a todo el país</span>
+              <span className={styles.shippingSubtext}>Conoce los tiempos y las formas de envío.</span>
+            </div>
+          </div>
+        </div>
+
+        <div className={styles.actionButtons}>
+          <button className={styles.buyButton}>Comprar ahora</button>
+          <button className={styles.addToCartButton}>Agregar al carrito</button>
+        </div>
+
+        <div className={styles.paymentMethods}>
+          <h4 className={styles.paymentTitle}>Medios de pago</h4>
+          <div className={styles.paymentList}>
+            {product.paymentMethods.map((method, index) => (
+              <div key={index} className={styles.paymentMethod}>
+                <span className={styles.paymentIcon}>💳</span>
+                <span className={styles.paymentText}>{method}</span>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
 
-      {/* Payment Methods */}
-      <div className={styles.paymentMethods}>
-        <h4 className={styles.paymentTitle}>Medios de pago</h4>
-        <div className={styles.creditCards}>
-          <h5 className={styles.cardTitle}>Tarjetas de crédito</h5>
-          <p className={styles.cardSubtitle}>¡Paga en hasta 36 cuotas!</p>
-          <div className={styles.cardLogos}>
-            <span className={styles.cardLogo}>💳</span>
-            <span className={styles.cardLogo}>💳</span>
-            <span className={styles.cardLogo}>💳</span>
-            <span className={styles.cardLogo}>💳</span>
-          </div>
-        </div>
-        <div className={styles.debitCards}>
-          <h5 className={styles.cardTitle}>Tarjetas de débito</h5>
-          <div className={styles.cardLogos}>
-            <span className={styles.cardLogo}>💳</span>
-            <span className={styles.cardLogo}>💳</span>
-          </div>
-        </div>
-      </div>
+
     </div>
   );
 };
