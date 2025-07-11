@@ -1,11 +1,12 @@
 import React from 'react';
+import { Product } from '../../domain/entities/Product';
 import styles from './PurchasePanelColumn.module.css';
 
 interface PurchasePanelColumnProps {
-  stock: number;
+  product: Product;
 }
 
-const PurchasePanelColumn: React.FC<PurchasePanelColumnProps> = ({ stock }) => {
+const PurchasePanelColumn: React.FC<PurchasePanelColumnProps> = ({ product }) => {
   return (
     <div className={styles.purchasePanelColumn}>
       {/* Shipping Info */}
@@ -38,7 +39,7 @@ const PurchasePanelColumn: React.FC<PurchasePanelColumnProps> = ({ stock }) => {
             <option value="3">3 unidades</option>
             <option value="4">4 unidades</option>
           </select>
-          <span className={styles.stockAvailable}>({stock} disponibles)</span>
+          <span className={styles.stockAvailable}>({product.additionalDetails?.availableStock || '4'} disponibles)</span>
         </div>
       </div>
 
@@ -51,7 +52,7 @@ const PurchasePanelColumn: React.FC<PurchasePanelColumnProps> = ({ stock }) => {
       {/* Seller Info */}
       <div className={styles.sellerInfo}>
         <span className={styles.sellerLabel}>
-          Vendido por <a href="#" className={styles.sellerName}>laeternaproductos</a>
+          Vendido por <a href="#" className={styles.sellerName}>{product.sellerInformation}</a>
         </span>
         <span className={styles.sellerReputation}>MercadoLíder | +1000 ventas</span>
       </div>

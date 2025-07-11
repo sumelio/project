@@ -1,0 +1,203 @@
+.sellerPanel {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 300px;
+}
+
+/* Seller Info Card */
+.sellerInfo {
+  background: white;
+  border-radius: 8px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.sellerHeader {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.sellerAvatar {
+  width: 40px;
+  height: 40px;
+  background: #f5f5f5;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  color: #666;
+}
+
+.sellerDetails {
+  flex: 1;
+}
+
+.sellerName {
+  font-size: 16px;
+  color: #333;
+  margin: 0;
+}
+
+.productsCount {
+  font-size: 14px;
+  color: #666;
+}
+
+.followButton {
+  background: #f5f5f5;
+  border: none;
+  border-radius: 4px;
+  padding: 6px 12px;
+  font-size: 14px;
+  color: #3483fa;
+  cursor: pointer;
+}
+
+.reputationInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.reputationBadge {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: #00a650;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.badgeIcon {
+  font-size: 16px;
+}
+
+.reputationDescription {
+  font-size: 12px;
+  color: #666;
+}
+
+.metricsBar {
+  margin: 8px 0;
+}
+
+.progressBar {
+  display: flex;
+  height: 6px;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.progressSegment {
+  flex: 1;
+}
+
+.metrics {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px 0;
+  border-top: 1px solid #e5e5e5;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.metricItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #666;
+}
+
+.metricValue {
+  font-weight: 600;
+}
+
+.metricIcon {
+  font-size: 16px;
+}
+
+.sellerLink {
+  display: block;
+  text-align: center;
+  color: #3483fa;
+  text-decoration: none;
+  padding: 12px;
+  border-radius: 6px;
+  background: #f5f5f5;
+  font-size: 14px;
+}
+
+.sellerLink:hover {
+  background: #ebf0ff;
+}
+
+/* Purchase Options */
+.purchaseOptions {
+  background: white;
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.optionsTitle {
+  font-size: 16px;
+  color: #333;
+  margin: 0 0 12px 0;
+}
+
+.optionsLink {
+  color: #3483fa;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.optionsLink:hover {
+  text-decoration: underline;
+}
+
+/* Payment Methods */
+.paymentMethods {
+  background: white;
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.paymentTitle {
+  font-size: 16px;
+  color: #333;
+  margin: 0 0 16px 0;
+}
+
+.creditCards,
+.debitCards {
+  margin-bottom: 16px;
+}
+
+.cardTitle {
+  font-size: 14px;
+  color: #333;
+  margin: 0 0 4px 0;
+}
+
+.cardSubtitle {
+  font-size: 12px;
+  color: #666;
+  margin: 0 0 8px 0;
+}
+
+.cardLogos {
+  display: flex;
+  gap: 8px;
+}
+
+.cardLogo {
+  font-size: 24px;
+} 

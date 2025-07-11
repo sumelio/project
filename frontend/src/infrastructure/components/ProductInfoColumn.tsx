@@ -1,20 +1,9 @@
 import React from 'react';
+import { Product } from '../../domain/entities/Product';
 import styles from './ProductInfoColumn.module.css';
 
 interface ProductInfoColumnProps {
-  product: {
-    title: string;
-    condition: string;
-    soldCount: number;
-    rating: number;
-    reviews: number;
-    price: string;
-    installments: {
-      amount: number;
-      quantity: number;
-      rate: number;
-    };
-  };
+  product: Product;
 }
 
 const ProductInfoColumn: React.FC<ProductInfoColumnProps> = ({ product }) => {
@@ -29,13 +18,13 @@ const ProductInfoColumn: React.FC<ProductInfoColumnProps> = ({ product }) => {
       <h1 className={styles.title}>{product.title}</h1>
 
       <div className={styles.rating}>
-        <span className={styles.ratingScore}>4.9</span>
+        <span className={styles.ratingScore}>{product.additionalDetails?.ratings || '4.9'}</span>
         <div className={styles.stars}>★★★★★</div>
-        <span className={styles.reviewCount}>(858)</span>
+        <span className={styles.reviewCount}>({product.additionalDetails?.reviews || '858'})</span>
       </div>
 
       <div className={styles.pricing}>
-        <div className={styles.price}>$ 1.853.861</div>
+        <div className={styles.price}>{product.price}</div>
         <div className={styles.installments}>
           en <span className={styles.highlight}>3 cuotas de $ 617.954</span>
         </div>

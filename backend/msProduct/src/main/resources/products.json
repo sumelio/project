@@ -1,10 +1,12 @@
 [ {
   "id": "1",
   "images": ["https://http2.mlstatic.com/D_NQ_NP_2X_800035-MLA81367078349_122024-F.webp",
-  "https://http2.mlstatic.com/D_Q_NP_2X_621964-MLA81364948571_122024-R.webp",
+  "https://http2.mlstatic.com/D_NQ_NP_2X_621964-MLA81364948571_122024-F.webp",
   "https://http2.mlstatic.com/D_NQ_NP_2X_777643-MLA75395342152_042024-F.webp", 
   "https://http2.mlstatic.com/D_NQ_NP_2X_725539-MLA80825742603_112024-F.webp",
-  "https://http2.mlstatic.com/D_NQ_NP_2X_780712-MLA81099188364_122024-F.webp"],
+  "https://http2.mlstatic.com/D_NQ_NP_2X_780712-MLA81099188364_122024-F.webp",
+  "https://http2.mlstatic.com/D_NQ_NP_2X_818960-MLA81099131368_122024-F.webp",
+  "https://http2.mlstatic.com/D_NQ_NP_2X_868167-MLA81099064398_122024-F.webp"],
   "title": "Samsung Galaxy A55 5G Dual SIM 256 GB azul oscuro 8 GB RAM",
   "description": "The Samsung Galaxy A55 5G Dual SIM 256 GB in dark blue with 8 GB RAM is described as a device offering high performance due to its powerful processor and 8 GB of RAM, allowing for fast content transmission and simultaneous execution of multiple applications without delays. It boasts an unlimited storage capacity with 256 GB of internal memory, enabling users to download numerous files and applications, save photos, and store movies, series, and videos. The phone features a 6.6-inch screen, a 32 Mpx front camera, and a 50 Mpx rear camera. For security, it offers fingerprint and facial recognition unlocking. Additionally, it is unlocked for use with any preferred phone company and includes NFC functionality.",
   "price": "$1,853,861",
@@ -15,9 +17,9 @@
   ],
   "sellerInformation": "laeternaproductos. They are identified as a MercadoLíder and have over 1000 sales. The seller provides good customer service and delivers products on time.",
   "additionalDetails": {
-      "ratings": "4.9 out of 5, based on 857 opinions. Specific ratings include 4.7 for price-quality, 4.7 for camera quality, 4.6 for battery life, and 4.7 for durability.",
-      "reviews": "",
-      "availableStock": "4 units remaining."
+      "ratings": "4.8",
+      "reviews": "769",
+      "availableStock": "4"
   }
 }, {
   "id" : "2",
