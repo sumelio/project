@@ -1,17 +1,21 @@
 version: '3.8'
 
 services:
-  msproduct:
+  # Backend Service - Spring Boot API
+  backend:
     build:
       context: ./backend/msProduct
       dockerfile: Dockerfile
+    container_name: marketplace-backend
     ports:
       - "8080:8080"
     volumes:
       - ./backend/msProduct/src/main/resources/products.json:/app/data/products.json
+      - backend-logs:/app/logs
     environment:
       - SPRING_PROFILES_ACTIVE=docker
       - SERVER_PORT=8080
+      - JAVA_OPTS=-Xmx512m -Xms256m
     networks:
       - marketplace-network
     restart: unless-stopped
@@ -21,10 +25,63 @@ services:
       timeout: 10s
       retries: 3
       start_period: 40s
+    depends_on: []
+
+  # Frontend Service - React Application
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: marketplace-frontend
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      - NODE_ENV=production
+      - REACT_APP_API_BASE_URL=http://localhost:8080
+    networks:
+      - marketplace-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+    depends_on:
+      - backend
+
+  # Development Frontend Service (optional)
+  frontend-dev:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.dev
+    container_name: marketplace-frontend-dev
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+      - REACT_APP_API_BASE_URL=http://localhost:8080
+      - CHOKIDAR_USEPOLLING=true
+      - WATCHPACK_POLLING=true
+    networks:
+      - marketplace-network
+    restart: unless-stopped
+    depends_on:
+      - backend
+    profiles:
+      - development
 
 networks:
   marketplace-network:
     driver: bridge
+    name: marketplace-network
 
 volumes:
-  product-data: 
+  product-data:
+    name: marketplace-product-data
+  backend-logs:
+    name: marketplace-backend-logs

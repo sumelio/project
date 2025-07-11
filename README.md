@@ -38,6 +38,61 @@ This project implements **Hexagonal Architecture** (also known as Ports and Adap
 
 ---
 
+## Quick Start
+
+### 🐳 **Option 1: Docker Compose (Recommended)**
+
+The fastest way to run the entire application:
+
+```bash
+# Clone the repository
+git clone git@github.com:sumelio/project.git
+cd project
+
+# Start both services with Docker Compose
+docker-compose up -d
+
+# View logs
+docker-compose logs -f
+
+# Stop services
+docker-compose down
+```
+
+**Access:**
+- **Frontend**: http://localhost (production build with Nginx)
+- **Backend API**: http://localhost:8080
+
+### 🔧 **Option 2: Development Mode with Docker**
+
+For development with hot reload:
+
+```bash
+# Start with development profile
+docker-compose --profile development up -d
+
+# View logs
+docker-compose logs -f frontend-dev backend
+```
+
+**Access:**
+- **Frontend Dev**: http://localhost:3000 (hot reload enabled)
+- **Backend API**: http://localhost:8080
+
+### 💻 **Option 3: Local Development (No Docker)**
+
+```bash
+# Terminal 1 - Backend
+cd backend/msProduct
+./gradlew bootRun
+
+# Terminal 2 - Frontend
+cd frontend
+npm install && npm start
+```
+
+---
+
 ## Backend: Step-by-Step Guide
 
 ### 1. Project Structure
@@ -60,6 +115,8 @@ backend/msProduct/
 │            └── com/marketplace/          # Unit tests
 ├── build.gradle                          # Build configuration
 ├── gradlew                               # Gradle wrapper
+├── Dockerfile                           # Production container
+├── .dockerignore                        # Docker build optimization
 └── Dockerfile                           # Container configuration
 ```
 
@@ -289,6 +346,10 @@ frontend/
 │   │   └── components/         # React components
 │   └── __tests__/              # Test files
 ├── public/                     # Static assets
+├── Dockerfile                  # Production container
+├── Dockerfile.dev              # Development container
+├── nginx.conf                  # Nginx configuration
+├── .dockerignore               # Docker build optimization
 └── package.json               # Dependencies and scripts
 ```
 
@@ -299,6 +360,48 @@ frontend/
 - **Responsive Design** - Mobile-friendly CSS modules
 - **State Management** - Redux with saga pattern for API calls
 - **Error Handling** - Comprehensive error states and loading indicators
+
+---
+
+## 🐳 Docker Compose Configuration
+
+### Services Overview
+
+| Service | Container | Port | Description |
+|---------|-----------|------|-------------|
+| `backend` | marketplace-backend | 8080 | Spring Boot API with Amazon Corretto 21 |
+| `frontend` | marketplace-frontend | 80/443 | React app served by Nginx |
+| `frontend-dev` | marketplace-frontend-dev | 3000 | Development server with hot reload |
+
+### Docker Compose Commands
+
+```bash
+# Production mode (Nginx + Spring Boot)
+docker-compose up -d
+
+# Development mode (React dev server + Spring Boot)
+docker-compose --profile development up -d
+
+# Build and restart
+docker-compose up -d --build
+
+# View logs
+docker-compose logs -f
+
+# Stop all services
+docker-compose down
+
+# Remove volumes
+docker-compose down -v
+```
+
+### Environment Configuration
+
+The docker-compose.yml includes:
+- **Networking**: Internal communication between services
+- **Volume Mounting**: Persistent data and development hot reload
+- **Health Checks**: Automatic service monitoring
+- **Environment Variables**: Proper configuration for each environment
 
 ---
 
@@ -321,13 +424,32 @@ frontend/
 ### Prerequisites
 - **Java 21** (backend)
 - **Node.js 18+** and npm (frontend)
+- **Docker & Docker Compose** (for containerized development)
 - **Git** for version control
 
-### Quick Start
-1. **Clone the repository**
-2. **Backend**: `cd backend/msProduct && ./gradlew bootRun`
-3. **Frontend**: `cd frontend && npm install && npm start`
-4. **Access**: Frontend at `http://localhost:3000`, API at `http://localhost:8080`
+### Quick Start Options
+
+#### 1. Docker Compose (Fastest)
+```bash
+git clone <repository-url>
+cd project
+docker-compose up -d
+```
+
+#### 2. Local Development
+```bash
+# Backend
+cd backend/msProduct && ./gradlew bootRun
+
+# Frontend  
+cd frontend && npm install && npm start
+```
+
+#### 3. Mixed (Backend in Docker, Frontend local)
+```bash
+docker-compose up -d backend
+cd frontend && npm start
+```
 
 For detailed setup instructions, see [run.md](run.md).
 
@@ -342,6 +464,8 @@ For detailed setup instructions, see [run.md](run.md).
 - **Testing**: Comprehensive unit and integration tests
 - **Documentation**: Complete setup and API documentation
 - **CORS**: Configured for frontend-backend integration
+- **Docker**: Full containerization with Docker Compose
+- **Production Ready**: Nginx serving, Amazon Corretto 21, optimized builds
 
 ### 🚀 **Ready for Development**
 Both backend and frontend services are fully functional with:
@@ -349,6 +473,7 @@ Both backend and frontend services are fully functional with:
 - Comprehensive testing suites
 - Production-ready build configurations
 - Docker support for deployment
+- Multi-environment configuration (development/production)
 
 ---
 
@@ -359,5 +484,7 @@ Both backend and frontend services are fully functional with:
 - **Modern Stack**: Uses latest versions of Java, Spring Boot, React, and TypeScript
 - **Comprehensive Testing**: Both services exceed 80% code coverage
 - **Production Ready**: Includes Docker configurations and build optimizations
+- **Amazon Corretto 21**: AWS-optimized Java runtime for better performance
+- **Nginx Serving**: Optimized static file serving with security headers
 - **Checkout Logic**: Not implemented (out of scope for this prototype)
 - **Recommendations**: Not implemented (out of scope for this prototype)
