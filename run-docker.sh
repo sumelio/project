@@ -8,4 +8,5 @@ docker-compose down
 # Build and start the services
 docker-compose up --build
 
-echo "msProduct is running on http://localhost:8080" 
+echo "frontend is running on http://localhost:80" 
+echo "backend is running on http://localhost:8080" 
