@@ -13,8 +13,8 @@ COPY src src
 RUN chmod +x gradlew
 RUN ./gradlew build -x test
 
-# Runtime stage - Using Amazon Corretto 21 JRE
-FROM amazoncorretto:21-alpine-jre
+# Runtime stage - Using Amazon Corretto 21 JDK Alpine
+FROM amazoncorretto:21-alpine-jdk
 WORKDIR /app
 
 # Install curl for health checks

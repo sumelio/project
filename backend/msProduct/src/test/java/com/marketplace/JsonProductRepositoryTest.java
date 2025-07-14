@@ -2,6 +2,7 @@ package com.marketplace;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.marketplace.domain.Product;
+import com.marketplace.domain.exceptions.ProductNotFoundException;
 import com.marketplace.infrastructure.JsonProductRepository;
 import org.junit.jupiter.api.*;
 
@@ -70,7 +71,8 @@ class JsonProductRepositoryTest {
         product.setId("1");
         repository.save(product);
         repository.delete("1");
-        assertNull(repository.findById("1"));
+        // After deletion, findById should throw ProductNotFoundException
+        assertThrows(ProductNotFoundException.class, () -> repository.findById("1"));
     }
 
     @Test

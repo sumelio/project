@@ -1,35 +1,52 @@
 package com.marketplace.infrastructure.config;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.cors.CorsConfiguration;
-import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
 import java.util.Arrays;
+import java.util.List;
 
 @Configuration
 public class CorsConfig {
+
+    @Value("${cors.allowed-origins}")
+    private String allowedOrigins;
+
+    @Value("${cors.allowed-methods}")
+    private String allowedMethods;
+
+    @Value("${cors.allowed-headers}")
+    private String allowedHeaders;
+
+    @Value("${cors.allow-credentials}")
+    private boolean allowCredentials;
+
+    @Value("${cors.max-age}")
+    private long maxAge;
 
     @Bean
     public CorsFilter corsFilter() {
         CorsConfiguration corsConfiguration = new CorsConfiguration();
         
-        // Allow requests from the frontend
-        corsConfiguration.setAllowedOriginPatterns(Arrays.asList("http://localhost:3000", "http://127.0.0.1:3000"));
+        // Parse allowed origins from properties
+        List<String> originPatterns = Arrays.asList(allowedOrigins.split(","));
+        corsConfiguration.setAllowedOriginPatterns(originPatterns);
         
-        // Allow all HTTP methods
-        corsConfiguration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
+        // Parse allowed methods from properties
+        List<String> methods = Arrays.asList(allowedMethods.split(","));
+        corsConfiguration.setAllowedMethods(methods);
         
-        // Allow all headers
-        corsConfiguration.setAllowedHeaders(Arrays.asList("*"));
+        // Parse allowed headers from properties
+        List<String> headers = Arrays.asList(allowedHeaders.split(","));
+        corsConfiguration.setAllowedHeaders(headers);
         
-        // Allow credentials
-        corsConfiguration.setAllowCredentials(true);
-        
-        // Set max age for preflight requests
-        corsConfiguration.setMaxAge(3600L);
+        // Set credentials and max age from properties
+        corsConfiguration.setAllowCredentials(allowCredentials);
+        corsConfiguration.setMaxAge(maxAge);
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", corsConfiguration);

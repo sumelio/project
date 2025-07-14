@@ -216,9 +216,26 @@ public class ProductController {
 }
 ```
 
-**CorsConfig.java** - CORS configuration for frontend integration
+**CorsConfig.java** - CORS configuration for frontend integration (configured via application.properties)
 
-### 7. API Response Example
+### 7. Configuration Files
+
+**Application Properties:**
+- `application.properties` - Default configuration
+- `application-dev.properties` - Development profile (permissive CORS)
+- `application-docker.properties` - Docker profile (container-aware CORS)
+- `application-prod.properties` - Production profile (restrictive CORS)
+
+**CORS Configuration Properties:**
+```properties
+cors.allowed-origins=http://localhost:3000,http://localhost:8080
+cors.allowed-methods=GET,POST,PUT,DELETE,OPTIONS
+cors.allowed-headers=*
+cors.allow-credentials=true
+cors.max-age=3600
+```
+
+### 8. API Response Example
 
 **GET /product/1**
 ```json
