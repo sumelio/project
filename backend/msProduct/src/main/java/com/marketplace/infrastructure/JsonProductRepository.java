@@ -4,6 +4,8 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.marketplace.domain.Product;
 import com.marketplace.domain.ProductRepository;
+import com.marketplace.domain.exceptions.DataAccessException;
+import com.marketplace.domain.exceptions.ProductNotFoundException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
 
@@ -28,13 +30,26 @@ public class JsonProductRepository implements ProductRepository {
             if (!file.exists() || file.length() == 0) return new ArrayList<>();
             return objectMapper.readValue(file, new TypeReference<List<Product>>() {});
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            throw new DataAccessException("Failed to read products from file: " + dataFile, e);
         }
     }
 
     @Override
     public Product findById(String id) {
-        return findAll().stream().filter(p -> p.getId().equals(id)).findFirst().orElse(null);
+        if (id == null || id.trim().isEmpty()) {
+            throw new IllegalArgumentException("Product ID cannot be null or empty");
+        }
+        
+        Product product = findAll().stream()
+            .filter(p -> p.getId().equals(id))
+            .findFirst()
+            .orElse(null);
+            
+        if (product == null) {
+            throw new ProductNotFoundException(id);
+        }
+        
+        return product;
     }
 
     @Override
@@ -69,7 +84,7 @@ public class JsonProductRepository implements ProductRepository {
         try {
             objectMapper.writerWithDefaultPrettyPrinter().writeValue(new File(dataFile), products);
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            throw new DataAccessException("Failed to write products to file: " + dataFile, e);
         }
     }
 } 

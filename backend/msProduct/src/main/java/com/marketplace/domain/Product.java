@@ -2,6 +2,7 @@
 // If your IDE shows a package mismatch, ensure your source root is set to src/main/java
 package com.marketplace.domain;
 
+
 import java.util.List;
 
 public class Product {
