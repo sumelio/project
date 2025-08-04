@@ -8,6 +8,12 @@ This project is a prototype for an item detail page inspired by MercadoLibre, in
 
 ---
 
+## Related Resources
+
+- **[Model Context Protocol Servers](https://github.com/modelcontextprotocol/servers)** - Reference implementation and tools for Model Context Protocol servers
+
+---
+
 ## Technology Stack
 
 ### Backend

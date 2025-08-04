@@ -9,6 +9,7 @@ import PurchasePanelColumn from './PurchasePanelColumn';
 import RelatedProducts from './RelatedProducts';
 import LoadingSpinner from './LoadingSpinner';
 import ErrorMessage from './ErrorMessage';
+import ShoppingCart from './ShoppingCart';
 import styles from './ProductDetailPage.module.css';
 
 interface ProductDetailPageProps {
@@ -44,6 +45,7 @@ const ProductDetailPage: React.FC<ProductDetailPageProps> = ({ productId = "1" }
 
   return (
     <div className={styles.pageContainer}>
+      <ShoppingCart />
       {/* Breadcrumb */}
       <div className={styles.breadcrumbSection}>
         <div className={styles.container}>

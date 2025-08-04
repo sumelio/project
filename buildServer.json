@@ -1,0 +1,19 @@
+{
+	"name": "xcode build server",
+	"version": "0.2",
+	"bspVersion": "2.0",
+	"languages": [
+		"c",
+		"cpp",
+		"objective-c",
+		"objective-cpp",
+		"swift"
+	],
+	"argv": [
+		"/opt/homebrew/bin/xcode-build-server"
+	],
+	"workspace": "/Users/m/Documents/work/personal/meli/project/app/IOS/MarketPlaceIosApp/MarketPlaceIosApp.xcodeproj/project.xcworkspace",
+	"build_root": "/Users/m/Library/Developer/Xcode/DerivedData/MarketPlaceIosApp-dcyecobvifmfxxfvtfefzlimvvjf",
+	"scheme": "MarketPlaceIosApp",
+	"kind": "xcode"
+}

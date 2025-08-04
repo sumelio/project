@@ -1,0 +1,99 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.4);
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  z-index: 1000;
+}
+.cartPanel {
+  background: #fff;
+  width: 350px;
+  max-width: 100vw;
+  height: 100vh;
+  box-shadow: -2px 0 8px rgba(0,0,0,0.15);
+  padding: 24px 16px 16px 16px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.closeButton {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  background: none;
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
+  color: #888;
+}
+.empty {
+  text-align: center;
+  color: #888;
+  margin-top: 40px;
+}
+.itemList {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 16px 0;
+  flex: 1;
+  overflow-y: auto;
+}
+.item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 8px;
+}
+.image {
+  width: 48px;
+  height: 48px;
+  object-fit: cover;
+  border-radius: 6px;
+  background: #f5f5f5;
+}
+.info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.title {
+  font-size: 15px;
+  color: #333;
+  font-weight: 500;
+}
+.price {
+  font-size: 14px;
+  color: #3483fa;
+}
+.removeButton {
+  background: none;
+  border: none;
+  color: #e53935;
+  font-size: 13px;
+  cursor: pointer;
+}
+.total {
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+  margin: 12px 0;
+}
+.clearButton {
+  background: #e53935;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 0;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 8px;
+} 

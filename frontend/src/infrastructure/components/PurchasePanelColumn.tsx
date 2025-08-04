@@ -1,12 +1,15 @@
 import React from 'react';
 import { Product } from '../../domain/entities/Product';
 import styles from './PurchasePanelColumn.module.css';
+import { useDispatch } from 'react-redux';
+import { addToCart } from '../../application/store/cartSlice';
 
 interface PurchasePanelColumnProps {
   product: Product;
 }
 
 const PurchasePanelColumn: React.FC<PurchasePanelColumnProps> = ({ product }) => {
+  const dispatch = useDispatch();
   return (
     <div className={styles.purchasePanelColumn}>
       {/* Shipping Info */}
@@ -46,7 +49,7 @@ const PurchasePanelColumn: React.FC<PurchasePanelColumnProps> = ({ product }) =>
       {/* Action Buttons */}
       <div className={styles.actionButtons}>
         <button className={styles.buyNowButton}>Comprar ahora</button>
-        <button className={styles.addToCartButton}>Agregar al carrito</button>
+        <button className={styles.addToCartButton} onClick={() => dispatch(addToCart(product))}>Agregar al carrito</button>
       </div>
 
       {/* Seller Info */}

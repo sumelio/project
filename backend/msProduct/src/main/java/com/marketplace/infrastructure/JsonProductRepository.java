@@ -19,14 +19,19 @@ public class JsonProductRepository implements ProductRepository {
     private final String dataFile;
     private final ObjectMapper objectMapper = new ObjectMapper();
 
-    public JsonProductRepository(@Value("${app.data.file:src/main/resources/products.json}") String dataFile) {
+    public JsonProductRepository(@Value("${app.data.file:products.json}") String dataFile) {
         this.dataFile = dataFile;
     }
 
     @Override
     public List<Product> findAll() {
         try {
-            File file = new File(dataFile);
+
+            File file = new File(this.dataFile);
+            if (!file.exists() || file.length() == 0) {
+                file = new File("./src/main/resources/products.json");
+            }
+
             if (!file.exists() || file.length() == 0) return new ArrayList<>();
             return objectMapper.readValue(file, new TypeReference<List<Product>>() {});
         } catch (IOException e) {

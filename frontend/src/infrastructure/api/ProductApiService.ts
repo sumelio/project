@@ -75,6 +75,11 @@ export class ProductApiService {
     }
   }
 
+  async getAllProducts(): Promise<Product[]> {
+    const response = await this.apiClient.get<Product[]>('/product');
+    return response.data;
+  }
+
   // Method to test API connection
   async testConnection(): Promise<boolean> {
     try {
