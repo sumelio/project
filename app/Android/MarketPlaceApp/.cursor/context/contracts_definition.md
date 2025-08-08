@@ -1,0 +1,142 @@
+# Platziflix
+
+plataforma marketPlace, cada producto tiene clases, descripciones y no hay mucho mas, eso es el inicio.
+
+## Contratos
+
+#### Entidades
+1. Product
+### API
+
+**GET /product/1**
+```json
+{
+  "id": "1",
+  "images": [
+    "https://http2.mlstatic.com/D_NQ_NP_2X_800035-MLA81367078349_122024-F.webp",
+    "https://http2.mlstatic.com/D_NQ_NP_2X_621964-MLA81364948571_122024-F.webp",
+    "https://http2.mlstatic.com/D_NQ_NP_2X_777643-MLA75395342152_042024-F.webp",
+    "https://http2.mlstatic.com/D_NQ_NP_2X_725539-MLA80825742603_112024-F.webp",
+    "https://http2.mlstatic.com/D_NQ_NP_2X_780712-MLA81099188364_122024-F.webp",
+    "https://http2.mlstatic.com/D_NQ_NP_2X_818960-MLA81099131368_122024-F.webp",
+    "https://http2.mlstatic.com/D_NQ_NP_2X_868167-MLA81099064398_122024-F.webp"
+  ],
+  "title": "Samsung Galaxy A55 5G Dual SIM 256 GB azul oscuro 8 GB RAM",
+  "description": "The Samsung Galaxy A55 5G Dual SIM 256 GB in dark blue with 8 GB RAM is described as a device offering high performance due to its powerful processor and 8 GB of RAM, allowing for fast content transmission and simultaneous execution of multiple applications without delays. It boasts an unlimited storage capacity with 256 GB of internal memory, enabling users to download numerous files and applications, save photos, and store movies, series, and videos. The phone features a 6.6-inch screen, a 32 Mpx front camera, and a 50 Mpx rear camera. For security, it offers fingerprint and facial recognition unlocking. Additionally, it is unlocked for use with any preferred phone company and includes NFC functionality.",
+  "price": "1853861",
+  "paymentMethods": [
+    "Credit cards (Visa, Mastercard, American Express, Crédito Fácil Codensa)",
+    "Debit cards (Visa Débito, Mastercard Débito)",
+    "Cash through Efecty"
+  ],
+  "sellerInformation": {
+    "name": "Tienda Oficial de Samsung",
+    "productsCount": "100mil",
+    "reputation": {
+      "level": "MercadoLíder",
+      "description": "¡Uno de los mejores del sitio!"
+    },
+    "metrics": {
+      "sales": "1000",
+      "service": "Brinda buena atención",
+      "delivery": "Entrega sus productos a tiempo"
+    },
+    "purchaseOptions": {
+      "price": 1853861
+    }
+  },
+  "additionalDetails": {
+    "ratings": "4.8",
+    "reviews": "769",
+    "availableStock": "4"
+  }
+}
+```
+
+**GET /product**
+```json
+[
+  {
+    "id": "1",
+    "images": [
+      "https://http2.mlstatic.com/D_NQ_NP_2X_800035-MLA81367078349_122024-F.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_621964-MLA81364948571_122024-F.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_777643-MLA75395342152_042024-F.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_725539-MLA80825742603_112024-F.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_780712-MLA81099188364_122024-F.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_818960-MLA81099131368_122024-F.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_868167-MLA81099064398_122024-F.webp"
+    ],
+    "title": "Samsung Galaxy A55 5G Dual SIM 256 GB azul oscuro 8 GB RAM",
+    "description": "The Samsung Galaxy A55 5G Dual SIM 256 GB in dark blue with 8 GB RAM is described as a device offering high performance due to its powerful processor and 8 GB of RAM, allowing for fast content transmission and simultaneous execution of multiple applications without delays. It boasts an unlimited storage capacity with 256 GB of internal memory, enabling users to download numerous files and applications, save photos, and store movies, series, and videos. The phone features a 6.6-inch screen, a 32 Mpx front camera, and a 50 Mpx rear camera. For security, it offers fingerprint and facial recognition unlocking. Additionally, it is unlocked for use with any preferred phone company and includes NFC functionality.",
+    "price": "1853861",
+    "paymentMethods": [
+      "Credit cards (Visa, Mastercard, American Express, Crédito Fácil Codensa)",
+      "Debit cards (Visa Débito, Mastercard Débito)",
+      "Cash through Efecty"
+    ],
+    "sellerInformation": {
+      "name": "Tienda Oficial de Samsung",
+      "productsCount": "100mil",
+      "reputation": {
+        "level": "MercadoLíder",
+        "description": "¡Uno de los mejores del sitio!"
+      },
+      "metrics": {
+        "sales": "1000",
+        "service": "Brinda buena atención",
+        "delivery": "Entrega sus productos a tiempo"
+      },
+      "purchaseOptions": {
+        "price": 1853861
+      }
+    },
+    "additionalDetails": {
+      "ratings": "4.8",
+      "reviews": "769",
+      "availableStock": "4"
+    }
+  },
+  {
+    "id": "2",
+    "images": [
+      "https://http2.mlstatic.com/D_NQ_NP_2X_800035-MLA81367078349_122024-F.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_621964-MLA81364948571_122024-F.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_777643-MLA75395342152_042024-F.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_725539-MLA80825742603_112024-F.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_780712-MLA81099188364_122024-F.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_818960-MLA81099131368_122024-F.webp",
+      "https://http2.mlstatic.com/D_NQ_NP_2X_868167-MLA81099064398_122024-F.webp"
+    ],
+    "title": "Samsung Galaxy NNNNN 5G Dual SIM 256 GB azul oscuro 8 GB RAM",
+    "description": "The Samsung Galaxy A55 5G Dual SIM 256 GB in dark blue with 8 GB RAM is described as a device offering high performance due to its powerful processor and 8 GB of RAM, allowing for fast content transmission and simultaneous execution of multiple applications without delays. It boasts an unlimited storage capacity with 256 GB of internal memory, enabling users to download numerous files and applications, save photos, and store movies, series, and videos. The phone features a 6.6-inch screen, a 32 Mpx front camera, and a 50 Mpx rear camera. For security, it offers fingerprint and facial recognition unlocking. Additionally, it is unlocked for use with any preferred phone company and includes NFC functionality.",
+    "price": "1853861",
+    "paymentMethods": [
+      "Credit cards (Visa, Mastercard, American Express, Crédito Fácil Codensa)",
+      "Debit cards (Visa Débito, Mastercard Débito)",
+      "Cash through Efecty"
+    ],
+    "sellerInformation": {
+      "name": "Tienda Oficial de Samsung",
+      "productsCount": "100mil",
+      "reputation": {
+        "level": "MercadoLíder",
+        "description": "¡Uno de los mejores del sitio!"
+      },
+      "metrics": {
+        "sales": "1000",
+        "service": "Brinda buena atención",
+        "delivery": "Entrega sus productos a tiempo"
+      },
+      "purchaseOptions": {
+        "price": 1853861
+      }
+    },
+    "additionalDetails": {
+      "ratings": "4.8",
+      "reviews": "769",
+      "availableStock": "4"
+    }
+  }
+]
+```
