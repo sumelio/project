@@ -88,14 +88,14 @@ class GlobalExceptionHandlerTest {
         // Given
         ValidationException simpleException = new ValidationException("Simple validation failed");
         when(webRequest.getDescription(false)).thenReturn("uri=/product/1");
-        
+
         // When
         ResponseEntity<ErrorResponse> response = globalExceptionHandler.handleValidation(simpleException, webRequest);
-        
+
         // Then
         assertNotNull(response);
         assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
-        
+
         ErrorResponse errorResponse = response.getBody();
         assertNotNull(errorResponse);
         assertEquals("VALIDATION_ERROR", errorResponse.getError());
@@ -104,6 +104,7 @@ class GlobalExceptionHandlerTest {
         assertEquals(400, errorResponse.getStatus());
         assertNotNull(errorResponse.getTimestamp());
     }
+
 
     @Test
     void testHandleMethodArgumentTypeMismatch() {

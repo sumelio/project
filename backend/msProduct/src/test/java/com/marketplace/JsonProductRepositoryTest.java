@@ -84,4 +84,47 @@ class JsonProductRepositoryTest {
         // Restore permissions
         tempFile.setReadable(true);
     }
+
+    @Test
+    void testFindByIdWithNullId() {
+        // Test null ID validation
+        assertThrows(IllegalArgumentException.class, () -> repository.findById(null));
+    }
+
+    @Test
+    void testFindByIdWithEmptyId() {
+        // Test empty ID validation
+        assertThrows(IllegalArgumentException.class, () -> repository.findById(""));
+    }
+
+    @Test
+    void testFindByIdWithWhitespaceId() {
+        // Test whitespace-only ID validation
+        assertThrows(IllegalArgumentException.class, () -> repository.findById("   "));
+    }
+
+    @Test
+    void testFindAllWithNonExistentFile() throws IOException {
+        // Create repository with non-existent file path
+        File nonExistentFile = new File("non-existent-file-" + System.currentTimeMillis() + ".json");
+        JsonProductRepository repoWithNonExistentFile = new JsonProductRepository(nonExistentFile.getAbsolutePath());
+
+        // When file doesn't exist, it falls back to ./src/main/resources/products.json
+        // which exists and has data, so we should get products
+        List<Product> products = repoWithNonExistentFile.findAll();
+        assertNotNull(products);
+        // The fallback file exists and has data
+        assertFalse(products.isEmpty());
+    }
+
+    @Test
+    void testUpdateNonExistentProduct() {
+        Product product = new Product();
+        product.setId("999");
+        product.setTitle("Non-existent");
+
+        // Update should return null for non-existent product
+        Product result = repository.update("999", product);
+        assertNull(result);
+    }
 } 
