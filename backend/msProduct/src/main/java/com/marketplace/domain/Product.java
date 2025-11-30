@@ -2,17 +2,37 @@
 // If your IDE shows a package mismatch, ensure your source root is set to src/main/java
 package com.marketplace.domain;
 
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 
 import java.util.List;
 
 public class Product {
+    @NotBlank(message = "Product ID cannot be null or empty")
     private String id;
+
     private List<String> images;
+
+    @NotBlank(message = "Product title cannot be null or empty")
     private String title;
+
+    @NotBlank(message = "Product description cannot be null or empty")
     private String description;
+
+    @NotBlank(message = "Product price cannot be null or empty")
     private String price;
+
+    @NotEmpty(message = "Product payment methods cannot be null or empty")
     private List<String> paymentMethods;
+
+    @NotNull(message = "Product seller information cannot be null")
+    @Valid
     private SellerInformation sellerInformation;
+
+    @NotNull(message = "Product additional details cannot be null")
+    @Valid
     private AdditionalDetails additionalDetails;
 
     public Product() {}

@@ -100,7 +100,7 @@
 }
 
 .buyNowButton {
-  background: #3483fa;
+  background: #d32f2f;
   color: white;
   border: none;
   border-radius: 6px;
@@ -112,7 +112,7 @@
 }
 
 .buyNowButton:hover {
-  background: #2968c8;
+  background: #b71c1c;
 }
 
 .addToCartButton {

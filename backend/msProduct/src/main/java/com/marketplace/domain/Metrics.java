@@ -1,5 +1,10 @@
 package com.marketplace.domain;
 
+import com.marketplace.domain.exceptions.ValidationException;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class Metrics {
     private String sales;
     private String service;

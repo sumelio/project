@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(export JAVA_HOME=/Library/Java/JavaVirtualMachines/amazon-corretto-21.jdk/Contents/Home)",
+      "Bash(./gradlew clean test:*)",
+      "Bash(./gradlew test:*)",
+      "Bash(timeout 30 ./gradlew test:*)",
+      "Bash(test_output.txt)",
+      "Bash(cat:*)",
+      "Bash(tree:*)",
+      "Bash(docker-compose up:*)",
+      "Bash(docker-compose ps:*)",
+      "Bash(docker-compose logs:*)",
+      "Bash(curl:*)",
+      "mcp__notion__API-get-block-children"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

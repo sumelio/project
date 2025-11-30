@@ -2,6 +2,7 @@ package com.marketplace.infrastructure;
 
 import com.marketplace.application.ProductService;
 import com.marketplace.domain.Product;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,12 +29,12 @@ public class ProductController {
     }
 
     @PostMapping
-    public Product createProduct(@RequestBody Product product) {
+    public Product createProduct(@Valid @RequestBody Product product) {
         return productService.createProduct(product);
     }
 
     @PutMapping("/{id}")
-    public Product updateProduct(@PathVariable String id, @RequestBody Product product) {
+    public Product updateProduct(@PathVariable String id, @Valid @RequestBody Product product) {
         return productService.updateProduct(id, product);
     }
 
