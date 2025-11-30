@@ -43,11 +43,13 @@ class ProductServiceImplTest {
         p.setPaymentMethods(Arrays.asList("credit_card", "debit_card"));
 
         SellerInformation seller = new SellerInformation();
-        seller.setSellerName("Test Seller");
+        seller.setName("Test Seller");
         p.setSellerInformation(seller);
 
         AdditionalDetails details = new AdditionalDetails();
-        details.setCondition("new");
+        details.setRatings("5.0");
+        details.setReviews("100");
+        details.setAvailableStock("10");
         p.setAdditionalDetails(details);
 
         return p;
@@ -108,13 +110,12 @@ class ProductServiceImplTest {
 
     @Test
     void testUpdateProductNotFound() {
-        when(productRepository.findById("999")).thenReturn(null);
+        when(productRepository.update("999", product)).thenThrow(new ProductNotFoundException("999"));
         assertThrows(ProductNotFoundException.class, () -> productService.updateProduct("999", product));
     }
 
     @Test
     void testDeleteProduct() {
-        when(productRepository.findById("1")).thenReturn(product);
         doNothing().when(productRepository).delete("1");
         assertDoesNotThrow(() -> productService.deleteProduct("1"));
         verify(productRepository, times(1)).delete("1");
@@ -122,7 +123,7 @@ class ProductServiceImplTest {
 
     @Test
     void testDeleteProductNotFound() {
-        when(productRepository.findById("999")).thenReturn(null);
+        doThrow(new ProductNotFoundException("999")).when(productRepository).delete("999");
         assertThrows(ProductNotFoundException.class, () -> productService.deleteProduct("999"));
     }
 } 

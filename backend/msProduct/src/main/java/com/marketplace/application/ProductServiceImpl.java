@@ -33,7 +33,6 @@ public class ProductServiceImpl implements ProductService {
      */
     @Override
     public List<Product> getAllProducts() {
-        logger.debug("Retrieving all products");
         List<Product> products = productRepository.findAll();
         logger.info("Retrieved {} products", products.size());
         return products;
@@ -60,7 +59,7 @@ public class ProductServiceImpl implements ProductService {
 
         if (product == null) {
             logger.warn("Product not found with id: {}", id);
-            throw new ProductNotFoundException("Product not found with id: " + id);
+            throw new ProductNotFoundException(id);
         }
 
         logger.info("Successfully retrieved product with id: {}", id);
@@ -105,15 +104,9 @@ public class ProductServiceImpl implements ProductService {
             throw new IllegalArgumentException("Product ID cannot be null or empty");
         }
 
-        // Verify product exists
-        Product existingProduct = productRepository.findById(id);
-        if (existingProduct == null) {
-            logger.warn("Cannot update product - not found with id: {}", id);
-            throw new ProductNotFoundException("Product not found with id: " + id);
-        }
-
         validateProduct(product);
 
+        // Repository's update() will throw ProductNotFoundException if product doesn't exist
         Product updatedProduct = productRepository.update(id, product);
         logger.info("Successfully updated product with id: {}", id);
 
@@ -136,13 +129,7 @@ public class ProductServiceImpl implements ProductService {
             throw new IllegalArgumentException("Product ID cannot be null or empty");
         }
 
-        // Verify product exists before deletion
-        Product existingProduct = productRepository.findById(id);
-        if (existingProduct == null) {
-            logger.warn("Cannot delete product - not found with id: {}", id);
-            throw new ProductNotFoundException("Product not found with id: " + id);
-        }
-
+        // Repository's delete() will throw ProductNotFoundException if product doesn't exist
         productRepository.delete(id);
         logger.info("Successfully deleted product with id: {}", id);
     }

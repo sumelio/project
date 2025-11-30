@@ -123,8 +123,7 @@ class JsonProductRepositoryTest {
         product.setId("999");
         product.setTitle("Non-existent");
 
-        // Update should return null for non-existent product
-        Product result = repository.update("999", product);
-        assertNull(result);
+        // Update should throw ProductNotFoundException for non-existent product
+        assertThrows(ProductNotFoundException.class, () -> repository.update("999", product));
     }
 } 

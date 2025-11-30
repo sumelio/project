@@ -40,14 +40,23 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(ValidationException.class)
     public ResponseEntity<ErrorResponse> handleValidation(ValidationException ex, WebRequest request) {
         logger.warn("Validation error: {}", ex.getMessage());
-        
+
         ErrorResponse errorResponse = new ErrorResponse(
             "VALIDATION_ERROR",
             ex.getMessage(),
             request.getDescription(false).replace("uri=", ""),
             HttpStatus.BAD_REQUEST.value()
         );
-        
+
+        // Add validation errors to the response
+        if (ex.getValidationErrors() != null && !ex.getValidationErrors().isEmpty()) {
+            List<ErrorResponse.ValidationError> validationErrors = new ArrayList<>();
+            for (String error : ex.getValidationErrors()) {
+                validationErrors.add(new ErrorResponse.ValidationError(null, error, null));
+            }
+            errorResponse.setValidationErrors(validationErrors);
+        }
+
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
     }
 

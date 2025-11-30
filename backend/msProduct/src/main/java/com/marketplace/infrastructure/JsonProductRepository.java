@@ -75,13 +75,16 @@ public class JsonProductRepository implements ProductRepository {
                 return product;
             }
         }
-        return null;
+        throw new ProductNotFoundException(id);
     }
 
     @Override
     public void delete(String id) {
         List<Product> products = findAll();
-        products.removeIf(p -> p.getId().equals(id));
+        boolean removed = products.removeIf(p -> p.getId().equals(id));
+        if (!removed) {
+            throw new ProductNotFoundException(id);
+        }
         writeProducts(products);
     }
 
