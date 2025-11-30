@@ -2,6 +2,8 @@
 
 This guide explains how to set up and run both the backend and frontend components of the Marketplace Product application.
 
+Example.
+
 ## 📋 Prerequisites
 
 ### System Requirements
